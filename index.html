@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מערכת פתיחת קריאות | תעשייה אווירית</title>
+    <title>מערכת פתיחת קריאות | תשתיות מחשוב AVI </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -431,6 +433,29 @@
             transform: translateX(0);
         }
 
+        .email-status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .email-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            display: block;
+        }
+
+        .email-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+            display: block;
+        }
+
         .network-options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -527,6 +552,7 @@
                         <button type="submit" class="btn">
                             <i class="fas fa-paper-plane"></i> פתח קריאה
                         </button>
+                        <div id="emailStatus" class="email-status"></div>
                     </form>
                 </div>
 
@@ -632,22 +658,27 @@
     </div>
 
     <script>
+        // EmailJS Configuration - עם המפתח שלך
+        const EMAILJS_CONFIG = {
+            publicKey: 'esH56SuaeX5jnhiz-', // המפתח שלך
+            serviceId: 'service_xxxxxx',    // תצתרך ליצור את זה ב-EmailJS
+            templateId: 'template_xxxxxx'   // תצתרך ליצור את זה ב-EmailJS
+        };
+
         // LocalStorage keys
         const TICKETS_KEY = 'aircraftTickets';
         const ADMIN_CREDENTIALS_KEY = 'adminCredentials';
         const IS_ADMIN_LOGGED_IN_KEY = 'isAdminLoggedIn';
-        const ADMIN_EMAIL = 'bsimana@iai.co.il';
+        const ADMIN_EMAIL = 'benayau2@simana.club'; // כתובת האימייל שלך
 
-        // Initialize admin credentials
-        function initializeAdminCredentials() {
-            if (!localStorage.getItem(ADMIN_CREDENTIALS_KEY)) {
-                const adminCredentials = {
-                    username: 'admin',
-                    password: 'admin123'
-                };
-                localStorage.setItem(ADMIN_CREDENTIALS_KEY, JSON.stringify(adminCredentials));
+        // Initialize EmailJS
+        (function() {
+            try {
+                emailjs.init(EMAILJS_CONFIG.publicKey);
+            } catch (error) {
+                console.warn('EmailJS initialization failed:', error);
             }
-        }
+        })();
 
         // Network options selection
         document.querySelectorAll('.network-option').forEach(option => {
@@ -732,31 +763,54 @@
             sendEmailNotification(ticketWithDate);
         }
 
-        // Send email notification (mock implementation)
+        // Send email notification using EmailJS
         function sendEmailNotification(ticket) {
-            // This is a mock implementation - in real implementation you would use
-            // a backend service or email API like EmailJS, SMTP, etc.
-            console.log(`📧 אימייל נשלח אל: ${ADMIN_EMAIL}`);
-            console.log(`נושא: קריאה חדשה נפתחה - ${ticket.project}`);
-            console.log(`תוכן: 
-שם המבקש: ${ticket.requesterName}
-פרויקט: ${ticket.project}
-רשת: ${ticket.networkType}
-תיאור: ${ticket.description}
-תאריך: ${new Date(ticket.date).toLocaleString('he-IL')}
-`);
-            
-            // In a real implementation, you could use EmailJS:
-            /*
-            emailjs.send("service_id", "template_id", {
+            const templateParams = {
                 to_email: ADMIN_EMAIL,
                 requester_name: ticket.requesterName,
                 project: ticket.project,
                 network: ticket.networkType,
                 description: ticket.description,
-                date: new Date(ticket.date).toLocaleString('he-IL')
-            });
-            */
+                date: new Date(ticket.date).toLocaleString('he-IL'),
+                ticket_details: `
+פרטי הקריאה:
+שם המבקש: ${ticket.requesterName}
+פרויקט: ${ticket.project}
+רשת: ${ticket.networkType}
+תיאור: ${ticket.description}
+תאריך: ${new Date(ticket.date).toLocaleString('he-IL')}
+                `
+            };
+
+            // Check if EmailJS is properly configured
+            if (EMAILJS_CONFIG.serviceId === 'service_xxxxxx' || 
+                EMAILJS_CONFIG.templateId === 'template_xxxxxx') {
+                
+                console.warn('⚠️ EmailJS לא מוגדר כראוי. אתה צריך ליצור Service ו-Template ב-EmailJS');
+                showEmailStatus('מערכת המיילים לא מוגדרת עדיין - تحتاج ליצור Service ו-Template ב-EmailJS', 'error');
+                return;
+            }
+
+            emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showEmailStatus('המייל נשלח בהצלחה!', 'success');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    showEmailStatus('שגיאה בשליחת המייל', 'error');
+                });
+        }
+
+        // Show email status message
+        function showEmailStatus(message, type) {
+            const statusDiv = document.getElementById('emailStatus');
+            statusDiv.textContent = message;
+            statusDiv.className = `email-status email-${type}`;
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
         }
 
         // Delete ticket
@@ -1042,6 +1096,17 @@
                 document.getElementById('errorMessage').style.display = 'none';
             }
         });
+
+        // Initialize admin credentials
+        function initializeAdminCredentials() {
+            if (!localStorage.getItem(ADMIN_CREDENTIALS_KEY)) {
+                const adminCredentials = {
+                    username: 'benayau2',
+                    password: '160697Be'
+                };
+                localStorage.setItem(ADMIN_CREDENTIALS_KEY, JSON.stringify(adminCredentials));
+            }
+        }
 
         // Initialize
         initializeAdminCredentials();
