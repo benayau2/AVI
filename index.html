@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מערכת פתיחת קריאות | הנדסת תשתיות מחשוב</title>
+    <title>מערכת פתיחת קריאות | תעשייה אווירית</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- EmailJS SDK -->
@@ -40,7 +40,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -56,13 +56,13 @@
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
         }
 
@@ -88,64 +88,13 @@
             transform: translateY(-2px);
         }
 
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background: white;
-            border: 2px solid var(--border);
-            color: var(--dark);
-            padding: 12px 24px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .tab-btn:hover:not(.active) {
-            background: var(--light);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .full-width {
-            grid-column: 1 / -1;
-        }
-
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .card {
             background: white;
             border-radius: 16px;
             padding: 30px;
             box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 25px;
         }
 
         .card:hover {
@@ -162,48 +111,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .stat-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 1rem;
-        }
-
-        .chart-container {
-            height: 300px;
-            margin: 20px 0;
         }
 
         .form-group {
@@ -234,7 +141,7 @@
         }
 
         textarea {
-            min-height: 120px;
+            min-height: 100px;
             resize: vertical;
         }
 
@@ -262,157 +169,6 @@
 
         .btn:active {
             transform: translateY(0);
-        }
-
-        .tickets-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .ticket-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: var(--card-shadow);
-            border-left: 4px solid var(--primary);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .ticket-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .ticket-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .ticket-badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .badge-project {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-
-        .badge-network {
-            background: var(--success);
-            color: white;
-        }
-
-        .delete-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .ticket-card:hover .delete-btn {
-            opacity: 1;
-        }
-
-        .ticket-info {
-            margin-bottom: 15px;
-        }
-
-        .ticket-requester {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ticket-requester i {
-            color: var(--primary);
-        }
-
-        .ticket-description {
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .ticket-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: var(--gray);
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            color: var(--gray);
-        }
-
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--border);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: var(--hover-shadow);
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .modal-header h2 {
-            color: var(--dark);
-            margin-bottom: 10px;
-        }
-
-        .error-message {
-            color: var(--danger);
-            text-align: center;
-            margin: 15px 0;
-            display: none;
         }
 
         .notification {
@@ -482,6 +238,20 @@
             color: var(--primary);
         }
 
+        .note {
+            background: #fffbeb;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        .note i {
+            color: #92400e;
+            margin-left: 5px;
+        }
+
         /* Admin Dashboard Styles */
         .admin-dashboard {
             background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
@@ -490,6 +260,11 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: var(--card-shadow);
+            display: none;
+        }
+
+        .admin-dashboard.active {
+            display: block;
         }
 
         .admin-dashboard h2 {
@@ -562,13 +337,107 @@
             opacity: 0.9;
         }
 
+        .ticket-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .ticket-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-project {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .badge-network {
+            background: var(--success);
+            color: white;
+        }
+
+        .ticket-info {
+            margin-bottom: 15px;
+        }
+
+        .ticket-requester {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ticket-requester i {
+            color: var(--primary);
+        }
+
+        .ticket-description {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .ticket-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .complete-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .complete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .completed-ticket {
+            opacity: 0.7;
+            border-left-color: var(--success);
+        }
+
+        .completed-badge {
+            background: var(--success);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
         @media (max-width: 480px) {
-            .tickets-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
             
             .card {
@@ -590,122 +459,113 @@
                 </button>
             </div>
             <h1><i class="fas fa-ticket-alt"></i> מערכת פתיחת קריאות</h1>
-            <p> - הנדסת תשתיות מחשוב</p>
+            <p>תעשיית האוויר - הנדסת תשתיות מחשוב</p>
         </div>
 
         <!-- User Interface (Visible to everyone) -->
-        <div class="tab-content active" id="main-tab">
-            <div class="grid">
-                <div class="card">
-                    <h2 class="card-title"><i class="fas fa-plus-circle"></i> פתיחת קריאה חדשה</h2>
-                    <form id="ticketForm">
-                        <div class="form-group">
-                            <label for="requesterName"><i class="fas fa-user"></i> שם המבקש</label>
-                            <input type="text" id="requesterName" name="requesterName" placeholder="הזן את שמך המלא" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="project"><i class="fas fa-project-diagram"></i> שם הפרויקט</label>
-                            <input type="text" id="project" name="project" placeholder="הזן את שם הפרויקט" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label><i class="fas fa-network-wired"></i> סוג רשת</label>
-                            <div class="network-options">
-                                <div class="network-option" data-value="פנימי">פנימי</div>
-                                <div class="network-option" data-value="חיצוני">חיצוני</div>
-                                <div class="network-option" data-value="SA">SA</div>
-                            </div>
-                            <input type="hidden" id="networkType" name="networkType" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="description"><i class="fas fa-comment"></i> תיאור הבקשה</label>
-                            <textarea id="description" name="description" placeholder="לדוגמה: ביצוע לבנה, השחרה, התקנת תוכנה..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">
-                            <i class="fas fa-paper-plane"></i> פתח קריאה
-                        </button>
-                        <div id="emailStatus" class="email-status"></div>
-                    </form>
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-plus-circle"></i> פתיחת קריאה חדשה</h2>
+            <form id="ticketForm">
+                <div class="form-group">
+                    <label for="requesterName"><i class="fas fa-user"></i> שם המבקש</label>
+                    <input type="text" id="requesterName" name="requesterName" placeholder="הזן את שמך המלא" required>
                 </div>
-
-                <div class="card">
-                    <h2 class="card-title"><i class="fas fa-list"></i> קריאות פתוחות</h2>
-                    <div id="ticketsContainer">
-                        <div class="empty-state" id="emptyState">
-                            <i class="fas fa-inbox"></i>
-                            <h3>אין קריאות פתוחות</h3>
-                            <p>הקריאות החדשות שלך יופיעו כאן</p>
-                        </div>
-                        <div class="tickets-grid" id="ticketsGrid"></div>
+                
+                <div class="form-group">
+                    <label for="requesterEmail"><i class="fas fa-envelope"></i> כתובת אימייל</label>
+                    <input type="email" id="requesterEmail" name="requesterEmail" placeholder="הזן את כתובת האימייל שלך" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="project"><i class="fas fa-project-diagram"></i> שם הפרויקט</label>
+                    <input type="text" id="project" name="project" placeholder="הזן את שם הפרויקט" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-network-wired"></i> סוג רשת</label>
+                    <div class="network-options">
+                        <div class="network-option" data-value="פנימי">פנימי</div>
+                        <div class="network-option" data-value="חיצוני">חיצוני</div>
+                        <div class="network-option" data-value="SA">SA</div>
                     </div>
+                    <input type="hidden" id="networkType" name="networkType" required>
                 </div>
-            </div>
+                
+                <div class="form-group">
+                    <label for="description"><i class="fas fa-comment"></i> תיאור הבקשה</label>
+                    <textarea id="description" name="description" placeholder="לדוגמה: ביצוע לבנה, השחרה, התקנת תוכנה..." required></textarea>
+                </div>
+                
+                <div class="note">
+                    <i class="fas fa-info-circle"></i> שים לב: לאחר פתיחת הקריאה, תקבל אימייל כאשר המנהל יסיים לעבד אותה.
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i> פתח קריאה
+                </button>
+                <div id="emailStatus" class="email-status"></div>
+            </form>
         </div>
 
         <!-- Admin Dashboard (Only visible to admin) -->
-        <div class="tab-content" id="admin-dashboard" style="display: none;">
-            <div class="admin-dashboard">
-                <h2><i class="fas fa-chart-line"></i> לוח בקרה למנהל</h2>
-                
-                <div class="welcome-admin">
-                    <h3><i class="fas fa-star"></i> ברוך הבא, מנהל!</h3>
-                    <p>כאן תוכל לצפות בניתוחים מתקדמים ובסטטיסטיקות המערכת</p>
-                </div>
+        <div class="admin-dashboard" id="adminDashboard">
+            <h2><i class="fas fa-chart-line"></i> לוח בקרה למנהל</h2>
+            
+            <div class="welcome-admin">
+                <h3><i class="fas fa-star"></i> ברוך הבא, מנהל!</h3>
+                <p>כאן תוכל לצפות בקריאות פתוחות ולנהל את המערכת</p>
+            </div>
 
-                <div class="admin-stats-grid">
-                    <div class="admin-stat-card">
-                        <div class="admin-stat-icon" style="color: #60a5fa;">
-                            <i class="fas fa-ticket-alt"></i>
-                        </div>
-                        <div class="admin-stat-number" id="adminTotalTickets">0</div>
-                        <div class="admin-stat-label">קריאות סך הכל</div>
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="color: #60a5fa;">
+                        <i class="fas fa-ticket-alt"></i>
                     </div>
-                    <div class="admin-stat-card">
-                        <div class="admin-stat-icon" style="color: #34d399;">
-                            <i class="fas fa-calendar-week"></i>
-                        </div>
-                        <div class="admin-stat-number" id="adminWeekTickets">0</div>
-                        <div class="admin-stat-label">קריאות השבוע</div>
-                    </div>
-                    <div class="admin-stat-card">
-                        <div class="admin-stat-icon" style="color: #fbbf24;">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="admin-stat-number" id="adminActiveProjects">0</div>
-                        <div class="admin-stat-label">פרויקטים פעילים</div>
-                    </div>
-                    <div class="admin-stat-card">
-                        <div class="admin-stat-icon" style="color: #60a5fa;">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="admin-stat-number" id="adminActiveUsers">0</div>
-                        <div class="admin-stat-label">משתמשים פעילים</div>
-                    </div>
+                    <div class="admin-stat-number" id="adminTotalTickets">0</div>
+                    <div class="admin-stat-label">קריאות סך הכל</div>
                 </div>
-
-                <div class="admin-charts">
-                    <div class="card">
-                        <h3 class="card-title"><i class="fas fa-chart-bar"></i> התפלגות קריאות לפי פרויקט</h3>
-                        <div class="chart-container">
-                            <canvas id="adminProjectsChart"></canvas>
-                        </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="color: #fbbf24;">
+                        <i class="fas fa-clock"></i>
                     </div>
-                    
-                    <div class="card">
-                        <h3 class="card-title"><i class="fas fa-network-wired"></i> התפלגות לפי רשת</h3>
-                        <div class="chart-container">
-                            <canvas id="adminNetworkChart"></canvas>
-                        </div>
-                    </div>
+                    <div class="admin-stat-number" id="adminPendingTickets">0</div>
+                    <div class="admin-stat-label">קריאות ממתינות</div>
                 </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="color: #34d399;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="admin-stat-number" id="adminCompletedTickets">0</div>
+                    <div class="admin-stat-label">קריאות הושלמו</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="color: #60a5fa;">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="admin-stat-number" id="adminActiveProjects">0</div>
+                    <div class="admin-stat-label">פרויקטים פעילים</div>
+                </div>
+            </div>
 
-                <div class="card full-width">
-                    <h3 class="card-title"><i class="fas fa-chart-line"></i> קריאות לפי יום - 7 ימים אחרונים</h3>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-list"></i> קריאות פתוחות</h2>
+                <div id="adminTicketsContainer">
+                    <div id="adminTicketsList"></div>
+                </div>
+            </div>
+
+            <div class="admin-charts">
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-chart-bar"></i> התפלגות קריאות לפי פרויקט</h3>
                     <div class="chart-container">
-                        <canvas id="adminDailyChart"></canvas>
+                        <canvas id="adminProjectsChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-network-wired"></i> התפלגות לפי רשת</h3>
+                    <div class="chart-container">
+                        <canvas id="adminNetworkChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -713,24 +573,24 @@
     </div>
 
     <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
+    <div class="modal" id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="background: white; border-radius: 16px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            <div class="modal-header" style="text-align: center; margin-bottom: 20px;">
                 <h2><i class="fas fa-lock"></i> התחברות מנהל</h2>
                 <p>הזן את פרטי ההתחברות שלך</p>
             </div>
-            <div class="error-message" id="errorMessage">
+            <div class="error-message" id="errorMessage" style="color: var(--danger); text-align: center; margin: 15px 0; display: none;">
                 שם משתמש או סיסמה שגויים
             </div>
             <div class="form-group">
                 <label for="username"><i class="fas fa-user"></i> שם משתמש</label>
-                <input type="text" id="username" placeholder="הזן שם משתמש" required>
+                <input type="text" id="username" placeholder="הזן שם משתמש" required style="width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 12px;">
             </div>
             <div class="form-group">
                 <label for="password"><i class="fas fa-key"></i> סיסמה</label>
-                <input type="password" id="password" placeholder="הזן סיסמה" required>
+                <input type="password" id="password" placeholder="הזן סיסמה" required style="width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 12px;">
             </div>
-            <button class="btn" id="loginSubmit">
+            <button class="btn" id="loginSubmit" style="margin-top: 20px;">
                 <i class="fas fa-sign-in-alt"></i> התחבר
             </button>
         </div>
@@ -773,63 +633,28 @@
             });
         });
 
-        // Load tickets
-        function loadTickets() {
-            const tickets = JSON.parse(localStorage.getItem(TICKETS_KEY)) || [];
-            const ticketsGrid = document.getElementById('ticketsGrid');
-            const emptyState = document.getElementById('emptyState');
-            const isAdminLoggedIn = localStorage.getItem(IS_ADMIN_LOGGED_IN_KEY) === 'true';
-
-            if (tickets.length === 0) {
-                emptyState.style.display = 'block';
-                ticketsGrid.innerHTML = '';
-                return;
-            }
-
-            emptyState.style.display = 'none';
-            tickets.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-            ticketsGrid.innerHTML = tickets.map((ticket, index) => `
-                <div class="ticket-card">
-                    ${isAdminLoggedIn ? `<button class="delete-btn" onclick="deleteTicket(${index})">
-                        <i class="fas fa-times"></i>
-                    </button>` : ''}
-                    <div class="ticket-header">
-                        <span class="ticket-badge badge-project">${ticket.project}</span>
-                        <span class="ticket-badge badge-network">${ticket.networkType}</span>
-                    </div>
-                    <div class="ticket-info">
-                        <div class="ticket-requester">
-                            <i class="fas fa-user"></i> ${ticket.requesterName}
-                        </div>
-                        <div class="ticket-description">${ticket.description}</div>
-                    </div>
-                    <div class="ticket-footer">
-                        <span>${new Date(ticket.date).toLocaleString('he-IL')}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Save ticket and send email
+        // Save ticket and send email to admin
         function saveTicket(ticket) {
             const tickets = JSON.parse(localStorage.getItem(TICKETS_KEY)) || [];
             const ticketWithDate = {
                 ...ticket,
-                date: new Date().toISOString()
+                date: new Date().toISOString(),
+                completed: false,
+                completedDate: null
             };
             tickets.push(ticketWithDate);
             localStorage.setItem(TICKETS_KEY, JSON.stringify(tickets));
             
-            // Send email notification
-            sendEmailNotification(ticketWithDate);
+            // Send email notification to admin
+            sendAdminEmailNotification(ticketWithDate);
         }
 
-        // Send email notification using EmailJS
-        function sendEmailNotification(ticket) {
+        // Send email notification to admin
+        function sendAdminEmailNotification(ticket) {
             const templateParams = {
                 to_email: ADMIN_EMAIL,
                 requester_name: ticket.requesterName,
+                requester_email: ticket.requesterEmail,
                 project: ticket.project,
                 network: ticket.networkType,
                 description: ticket.description,
@@ -837,6 +662,7 @@
                 ticket_details: `
 פרטי הקריאה:
 שם המבקש: ${ticket.requesterName}
+אימייל: ${ticket.requesterEmail}
 פרויקט: ${ticket.project}
 רשת: ${ticket.networkType}
 תיאור: ${ticket.description}
@@ -847,11 +673,41 @@
             emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
-                    showEmailStatus('המייל נשלח בהצלחה!', 'success');
+                    showEmailStatus('הקריאה נפתחה בהצלחה! המנהל יטפל בה בהקדם.', 'success');
                 }, function(error) {
                     console.log('FAILED...', error);
-                    showEmailStatus('שגיאה בשליחת המייל', 'error');
+                    showEmailStatus('הקריאה נפתחה אך הייתה שגיאה בשליחת המייל למנהל', 'error');
                 });
+        }
+
+        // Send completion email to requester
+        function sendCompletionEmail(ticket) {
+            const templateParams = {
+                to_email: ticket.requesterEmail,
+                requester_name: ticket.requesterName,
+                project: ticket.project,
+                completion_date: new Date().toLocaleString('he-IL'),
+                admin_message: 'הבקשה שלך טופלה והושלמה בהצלחה!'
+            };
+
+            // You would need to create a separate template for completion emails
+            // For now, we'll just log it
+            console.log('_completion email would be sent to:', ticket.requesterEmail);
+        }
+
+        // Mark ticket as completed
+        function completeTicket(index) {
+            const tickets = JSON.parse(localStorage.getItem(TICKETS_KEY)) || [];
+            tickets[index].completed = true;
+            tickets[index].completedDate = new Date().toISOString();
+            localStorage.setItem(TICKETS_KEY, JSON.stringify(tickets));
+            
+            // Send completion email to requester
+            sendCompletionEmail(tickets[index]);
+            
+            // Refresh admin view
+            loadAdminTickets();
+            loadAdminAnalytics();
         }
 
         // Show email status message
@@ -866,17 +722,6 @@
             }, 5000);
         }
 
-        // Delete ticket
-        function deleteTicket(index) {
-            if (confirm('האם אתה בטוח שברצונך למחוק קריאה זו?')) {
-                const tickets = JSON.parse(localStorage.getItem(TICKETS_KEY)) || [];
-                tickets.splice(index, 1);
-                localStorage.setItem(TICKETS_KEY, JSON.stringify(tickets));
-                loadTickets();
-                loadAdminAnalytics(); // Refresh admin dashboard
-            }
-        }
-
         // Show notification
         function showNotification() {
             const notification = document.getElementById('notification');
@@ -886,30 +731,64 @@
             }, 3000);
         }
 
+        // Load admin tickets
+        function loadAdminTickets() {
+            const tickets = JSON.parse(localStorage.getItem(TICKETS_KEY)) || [];
+            const ticketsList = document.getElementById('adminTicketsList');
+            
+            if (tickets.length === 0) {
+                ticketsList.innerHTML = '<p style="text-align: center; color: #9ca3af;">אין קריאות פתוחות</p>';
+                return;
+            }
+            
+            ticketsList.innerHTML = tickets.map((ticket, index) => `
+                <div class="ticket-item ${ticket.completed ? 'completed-ticket' : ''}">
+                    <div class="ticket-header">
+                        <span class="ticket-badge badge-project">${ticket.project}</span>
+                        <span class="ticket-badge badge-network">${ticket.networkType}</span>
+                        ${ticket.completed ? '<span class="completed-badge">הושלמה</span>' : ''}
+                    </div>
+                    <div class="ticket-info">
+                        <div class="ticket-requester">
+                            <i class="fas fa-user"></i> ${ticket.requesterName} (${ticket.requesterEmail})
+                        </div>
+                        <div class="ticket-description">${ticket.description}</div>
+                    </div>
+                    <div class="ticket-footer">
+                        <span>${new Date(ticket.date).toLocaleString('he-IL')}</span>
+                        ${!ticket.completed ? `
+                            <button class="complete-btn" onclick="completeTicket(${index})">
+                                <i class="fas fa-check"></i> סמן כהושלם
+                            </button>
+                        ` : `
+                            <span style="color: var(--success); font-weight: 600;">
+                                <i class="fas fa-check-circle"></i> הושלם ב-${ticket.completedDate ? new Date(ticket.completedDate).toLocaleString('he-IL') : ''}
+                            </span>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+
         // Load admin analytics data
         function loadAdminAnalytics() {
             const tickets = JSON.parse(localStorage.getItem(TICKETS_KEY)) || [];
-            const now = new Date();
-            const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
             
             // Update statistics
             document.getElementById('adminTotalTickets').textContent = tickets.length;
             
-            const weekTickets = tickets.filter(ticket => 
-                new Date(ticket.date) >= oneWeekAgo
-            ).length;
-            document.getElementById('adminWeekTickets').textContent = weekTickets;
+            const pendingTickets = tickets.filter(ticket => !ticket.completed).length;
+            document.getElementById('adminPendingTickets').textContent = pendingTickets;
+            
+            const completedTickets = tickets.filter(ticket => ticket.completed).length;
+            document.getElementById('adminCompletedTickets').textContent = completedTickets;
             
             const projects = [...new Set(tickets.map(t => t.project))];
             document.getElementById('adminActiveProjects').textContent = projects.length;
             
-            const users = [...new Set(tickets.map(t => t.requesterName))];
-            document.getElementById('adminActiveUsers').textContent = users.length;
-            
             // Create charts
             createAdminProjectsChart(tickets);
             createAdminNetworkChart(tickets);
-            createAdminDailyChart(tickets);
         }
 
         // Create admin projects chart
@@ -1038,92 +917,13 @@
             });
         }
 
-        // Create admin daily chart
-        function createAdminDailyChart(tickets) {
-            const ctx = document.getElementById('adminDailyChart').getContext('2d');
-            const dateCounts = {};
-            
-            // Get last 7 days
-            const dates = [];
-            for (let i = 6; i >= 0; i--) {
-                const date = new Date();
-                date.setDate(date.getDate() - i);
-                const dateStr = date.toISOString().split('T')[0];
-                dates.push(dateStr);
-                dateCounts[dateStr] = 0;
-            }
-            
-            tickets.forEach(ticket => {
-                const ticketDate = ticket.date.split('T')[0];
-                if (dateCounts.hasOwnProperty(ticketDate)) {
-                    dateCounts[ticketDate]++;
-                }
-            });
-            
-            const labels = dates.map(date => {
-                const d = new Date(date);
-                return d.toLocaleDateString('he-IL', { weekday: 'short' });
-            });
-            const data = dates.map(date => dateCounts[date]);
-            
-            if (window.adminDailyChart) {
-                window.adminDailyChart.destroy();
-            }
-            
-            window.adminDailyChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'קריאות ביום',
-                        data: data,
-                        borderColor: 'rgba(96, 165, 250, 1)',
-                        backgroundColor: 'rgba(96, 165, 250, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 1,
-                                color: 'white'
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: 'white'
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: 'white'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
         // Form submission
         document.getElementById('ticketForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const ticket = {
                 requesterName: document.getElementById('requesterName').value,
+                requesterEmail: document.getElementById('requesterEmail').value,
                 project: document.getElementById('project').value,
                 networkType: document.getElementById('networkType').value,
                 description: document.getElementById('description').value
@@ -1133,7 +933,6 @@
             this.reset();
             document.querySelectorAll('.network-option').forEach(opt => opt.classList.remove('active'));
             document.getElementById('networkType').value = '';
-            loadTickets();
             showNotification();
         });
 
@@ -1154,12 +953,9 @@
                 document.getElementById('username').value = '';
                 document.getElementById('password').value = '';
                 document.getElementById('errorMessage').style.display = 'none';
-                loadTickets();
-                loadAdminAnalytics();
                 
                 // Show admin dashboard
-                document.getElementById('main-tab').style.display = 'none';
-                document.getElementById('admin-dashboard').style.display = 'block';
+                document.getElementById('adminDashboard').classList.add('active');
                 
                 // Update admin button to logout
                 this.closest('.admin-panel').innerHTML = `
@@ -1167,6 +963,10 @@
                         <i class="fas fa-sign-out-alt"></i> התנתק
                     </button>
                 `;
+                
+                // Load admin data
+                loadAdminTickets();
+                loadAdminAnalytics();
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
             }
@@ -1175,11 +975,9 @@
         // Admin logout
         function logoutAdmin() {
             localStorage.setItem(IS_ADMIN_LOGGED_IN_KEY, 'false');
-            loadTickets();
             
-            // Hide admin dashboard and show main interface
-            document.getElementById('admin-dashboard').style.display = 'none';
-            document.getElementById('main-tab').style.display = 'block';
+            // Hide admin dashboard
+            document.getElementById('adminDashboard').classList.remove('active');
             
             // Update admin button to login
             document.querySelector('.admin-panel').innerHTML = `
@@ -1213,7 +1011,6 @@
 
         // Initialize
         initializeAdminCredentials();
-        loadTickets();
     </script>
 </body>
 </html>
